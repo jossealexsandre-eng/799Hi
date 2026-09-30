@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" fill="none">
+  <!-- ALXV Typographic Logotype (Background Removed - Transparent) -->
+  <g fill="#E5191B" class="alxv-brand-mark">
+    <!-- Letter 'a' -->
+    <path d="M125 105 C85 105 55 130 55 175 C55 220 85 245 125 245 C145 245 160 236 170 224 L170 245 L200 245 L200 105 L170 105 L170 126 C160 114 145 105 125 105 Z M130 133 C152 133 170 150 170 175 C170 200 152 217 130 217 C108 217 90 200 90 175 C90 150 108 133 130 133 Z" />
+    
+    <!-- Letter 'l' (with tall organic swept finial) -->
+    <path d="M170 245 L205 245 L205 125 C205 85 218 55 245 42 C230 46 215 58 205 78 L205 105 L170 105 Z" />
+
+    <!-- Letter 'x' (Pinched Hourglass / Bowtie Silhouette) -->
+    <path d="M225 105 L260 105 C260 135 248 160 236 175 C248 190 260 215 260 245 L225 245 C225 218 238 195 246 175 C238 155 225 132 225 105 Z" />
+    <path d="M305 105 L270 105 C270 135 282 160 294 175 C282 190 270 215 270 245 L305 245 C305 218 292 195 284 175 C292 155 305 132 305 105 Z" />
+
+    <!-- Letter 'v' (Swooping left bowl & flared right wing) -->
+    <path d="M315 105 L345 105 C345 140 332 175 320 205 C332 225 352 238 375 238 C382 238 390 236 398 232 L398 245 C388 248 378 250 368 250 C335 250 312 230 302 195 L302 105 L325 105 C325 145 328 178 335 200 C340 180 345 150 345 105 Z" />
+    <path d="M360 105 L395 105 C395 145 385 185 365 218 L348 202 C362 175 370 145 370 105 Z" />
+  </g>
+
+  <!-- Subtitle: CREATIVE LABS. -->
+  <text x="250" y="278" text-anchor="middle" fill="#E5191B" font-family="'Inter', -apple-system, sans-serif" font-size="16" font-weight="700" letter-spacing="4.5">
+    CREATIVE LABS.
+  </text>
+</svg>
