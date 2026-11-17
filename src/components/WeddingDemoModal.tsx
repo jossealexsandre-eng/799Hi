@@ -534,7 +534,7 @@ export const WeddingDemoModal: React.FC<WeddingDemoModalProps> = ({
           <div className="p-3.5 sm:p-4 bg-[#141413] border-t border-[#282825] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
             <div className="text-xs text-[#8E8D89] text-center sm:text-left">
               <span>Interested in a custom wedding website like this? </span>
-              <span className="text-[#B89B72] font-semibold">Starting from Rp499K</span>
+              <span className="text-[#F20D0D] font-semibold">Mulai Rp199.000</span>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
               <button

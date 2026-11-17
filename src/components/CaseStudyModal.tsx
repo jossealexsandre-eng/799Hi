@@ -90,8 +90,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               <span className="block text-[11px] text-[#8E8D89] light:text-[#737373]">
                 Starting Price
               </span>
-              <span className="text-xs sm:text-sm font-semibold text-[#B89B72]">
-                Rp499K
+              <span className="text-xs sm:text-sm font-semibold text-[#F20D0D]">
+                Mulai Rp549.000
               </span>
             </div>
           </div>

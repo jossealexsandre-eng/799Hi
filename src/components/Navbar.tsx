@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { getWhatsAppLink } from '../data/content';
@@ -17,6 +18,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   isDark,
   onToggleTheme,
 }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredNavIndex, setHoveredNavIndex] = useState<number | null>(null);
@@ -53,6 +56,18 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleNavClick = (href: string) => {
     setActiveNav(href);
     setMobileMenuOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+      return;
+    }
+
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

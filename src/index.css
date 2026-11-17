@@ -212,10 +212,7 @@
 }
 .ambient-orb { animation: ambient-pulse 8s ease-in-out infinite; pointer-events: none; }
 
-/* 7. Spotlight card cursor passthrough */
-.spotlight-card * { cursor: none !important; }
-
-/* 8. Scale in for modals */
+/* 7. Scale in for modals */
 @keyframes scale-in {
   from { opacity: 0; transform: scale(0.94); }
   to   { opacity: 1; transform: scale(1); }

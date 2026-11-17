@@ -19,12 +19,12 @@ import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { BackToTop } from './components/BackToTop';
-import { CustomCursor } from './components/CustomCursor';
 import { WeddingDemoModal } from './components/WeddingDemoModal';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { IntroAnimation } from './components/IntroAnimation';
 import { SectionDivider } from './components/SectionDivider';
 import { ServiceDetail } from './pages/ServiceDetail';
+import { ServicesPage } from './pages/ServicesPage';
 import { ClickBurst } from './components/ClickBurst';
 import { AmbientParticles } from './components/AmbientParticles';
 
@@ -118,9 +118,6 @@ export default function App() {
       {/* Visual Reading Progress Bar */}
       <ScrollProgressBar />
 
-      {/* Subtle Desktop Cursor */}
-      <CustomCursor />
-
       {/* ── ANIMATIONS ── */}
       {/* 1. Click burst sparkle on every click */}
       <ClickBurst />
@@ -204,6 +201,24 @@ export default function App() {
 
                 {/* 13. Footer */}
                 <Footer />
+              </motion.div>
+            }
+          />
+
+          {/* Dedicated Services Catalog Overview Route */}
+          <Route
+            path="/services"
+            element={
+              <motion.div
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <ServicesPage
+                  isDark={isDark}
+                  onToggleTheme={() => setIsDark(!isDark)}
+                />
               </motion.div>
             }
           />

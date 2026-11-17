@@ -1,4 +1,10 @@
 export type WebsiteType =
+  | 'Personal Portfolio'
+  | 'Wedding Invitation'
+  | 'Cafe & Restaurant'
+  | 'Company Profile'
+  | 'Business Store'
+  | 'Custom Website'
   | 'Portfolio'
   | 'Business'
   | 'Wedding'
@@ -9,8 +15,9 @@ export type WebsiteType =
 export type BudgetRange =
   | 'Under Rp500K'
   | 'Rp500K – Rp1M'
-  | 'Rp1M – Rp2M'
-  | 'Rp2M+'
+  | 'Rp1M – Rp2.5M'
+  | 'Rp2.5M – Rp5M'
+  | 'Rp5M+'
   | 'Not sure yet';
 
 export interface ServiceItem {

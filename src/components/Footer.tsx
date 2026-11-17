@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Instagram } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
@@ -11,16 +12,19 @@ import {
 import { Logo799Hi } from './Logo799Hi';
 
 /** Shared animation variants */
-const fadeUp = {
+const fadeUp: any = {
   hidden: { opacity: 0, y: 20 },
   visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] as any },
   }),
 };
 
 export const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const links = [
     { label: 'Home', href: '#home' },
     { label: 'Services', href: '#services' },
@@ -32,6 +36,14 @@ export const Footer: React.FC = () => {
   ];
 
   const handleLinkClick = (href: string) => {
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };

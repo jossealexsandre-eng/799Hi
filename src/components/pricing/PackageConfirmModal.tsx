@@ -21,10 +21,11 @@ export const PackageConfirmModal: React.FC<PackageConfirmModalProps> = ({
   if (!selectedPackage) return null;
 
   const handleWhatsAppRedirect = () => {
+    const priceText = selectedPackage.priceFormatted || String(selectedPackage.price);
     const url = buildWhatsAppUrl(
       categoryName,
       selectedPackage.name,
-      selectedPackage.price
+      priceText
     );
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -71,8 +72,8 @@ export const PackageConfirmModal: React.FC<PackageConfirmModalProps> = ({
               <h3 className="text-2xl font-editorial font-normal text-[#F7F7F5] light:text-[#171717] mb-1">
                 {selectedPackage.name} Package Selected
               </h3>
-              <p className="text-lg font-mono font-medium text-[#B89B72]">
-                {categoryName} Website — {selectedPackage.price}
+              <p className="text-lg font-mono font-medium text-[#F20D0D]">
+                {categoryName} Website — {selectedPackage.priceFormatted || selectedPackage.price}
               </p>
             </div>
 

@@ -47,7 +47,7 @@ const LIVE_PROJECTS: ProjectData[] = [
       'Integrasi Google Maps',
       'Optimasi Mobile',
     ],
-    startingPrice: 'Rp799K',
+    startingPrice: 'Mulai Rp899.000',
   },
   {
     id: 'wedding',
@@ -69,7 +69,7 @@ const LIVE_PROJECTS: ProjectData[] = [
       'Navigasi Google Maps Venue',
       'Hadiah Digital & Transfer Bank',
     ],
-    startingPrice: 'Rp499K',
+    startingPrice: 'Mulai Rp199.000',
   },
   {
     id: 'alexsander',
@@ -91,7 +91,7 @@ const LIVE_PROJECTS: ProjectData[] = [
       'Saluran Inquiry WhatsApp',
       'Arsitektur Performa Tinggi',
     ],
-    startingPrice: 'Rp499K',
+    startingPrice: 'Mulai Rp549.000',
   },
   {
     id: 'rainer',
@@ -113,7 +113,7 @@ const LIVE_PROJECTS: ProjectData[] = [
       'Desain Minimalis & Legibilitas Tinggi',
       'Adaptasi Responsif Mobile',
     ],
-    startingPrice: 'Rp499K',
+    startingPrice: 'Mulai Rp549.000',
   },
 ];
 

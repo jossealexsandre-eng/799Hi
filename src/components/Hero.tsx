@@ -302,7 +302,7 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F6F5F2] dark:bg-[#161615] border border-[#E6E4DC] dark:border-[#282825]">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="font-medium text-[#171717] dark:text-[#F7F7F5]">Mulai dari</span>
-                <span className="font-bold text-[#881820] dark:text-[#B83240] tracking-wide">Rp499K</span>
+                <span className="font-bold text-[#F20D0D] tracking-wide">Rp199.000</span>
               </div>
               <span className="text-[#CCC] dark:text-[#3E3E3A]">·</span>
               <span className="flex items-center gap-1">
