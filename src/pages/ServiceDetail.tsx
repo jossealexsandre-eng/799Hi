@@ -15,6 +15,7 @@ import {
   ChevronUp,
   HelpCircle,
   FileText,
+  CheckCircle2,
 } from 'lucide-react';
 import {
   getServiceBySlug,
@@ -332,6 +333,46 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
           </section>
         );
       })()}
+
+      {/* ── Keunggulan Layanan (Manfaat Nyata) with Multi-Layer Box Shadow ── */}
+      {serviceData.benefits && serviceData.benefits.length > 0 && (
+        <section className="py-16 sm:py-24 bg-[#0E0E0D] dark:bg-[#0E0E0D] light:bg-[#F9F8F5] border-b border-[#242421] light:border-[#EAE7E1] relative">
+          <div className="max-w-7xl mx-auto px-5 sm:px-8">
+            <div className="max-w-2xl mb-12">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-2.5 font-medium">
+                KEUNGGULAN LAYANAN
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-editorial font-normal tracking-tight text-[#F7F7F5] light:text-[#171717]">
+                Manfaat Nyata untuk Kehadiran Digital Kamu
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+              {serviceData.benefits.map((benefit, bIdx) => (
+                <motion.div
+                  key={bIdx}
+                  initial={{ opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: bIdx * 0.08, ease: [0.22, 1, 0.36, 1] as any }}
+                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                  className="p-6 sm:p-7 rounded-2xl bg-[#161615] light:bg-[#FFFFFF] border border-[#282825] light:border-[#E4E2D8] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7),0_8px_16px_-8px_rgba(0,0,0,0.5)] light:shadow-[0_20px_40px_-15px_rgba(17,17,17,0.08),0_8px_16px_-8px_rgba(17,17,17,0.04)] hover:shadow-[0_26px_50px_-12px_rgba(242,13,13,0.18)] hover:border-[#F20D0D]/60 transition-all duration-300 flex flex-col justify-start group"
+                >
+                  <div className="w-9 h-9 rounded-full bg-[#F20D0D]/10 border border-[#F20D0D]/30 flex items-center justify-center mb-5 text-[#F20D0D] group-hover:scale-110 group-hover:bg-[#F20D0D] group-hover:text-white transition-all duration-300">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <h3 className="text-base font-semibold text-[#F7F7F5] light:text-[#171717] mb-2.5">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-xs text-[#8E8D89] light:text-[#737373] leading-relaxed">
+                    {benefit.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── B. Package Pricing Cards ── */}
       <section id="packages-section" className="py-20 sm:py-28 relative">

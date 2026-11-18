@@ -21,7 +21,7 @@ export const FAQ: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center sm:justify-start gap-2 mb-3"
           >
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#B89B72]">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D]">
               PERTANYAAN UMUM
             </span>
           </motion.div>
@@ -29,7 +29,7 @@ export const FAQ: React.FC = () => {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
             className="text-3xl sm:text-4xl md:text-5xl font-editorial font-normal tracking-tight text-[#F7F7F5] light:text-[#171717] mb-4"
           >
             Pertanyaan yang sering diajukan.
@@ -38,7 +38,7 @@ export const FAQ: React.FC = () => {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.16 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
             className="text-base text-[#8E8D89] light:text-[#737373]"
           >
             Hal-hal penting yang perlu Anda ketahui sebelum memulai proyek website Anda.
@@ -54,19 +54,23 @@ export const FAQ: React.FC = () => {
               <div key={idx} className="py-5 sm:py-6">
                 <button
                   onClick={() => toggleIndex(idx)}
-                  className="w-full flex items-center justify-between text-left group gap-4 focus:outline-none"
+                  className="w-full flex items-center justify-between text-left group gap-4 focus:outline-none cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base sm:text-lg font-medium text-[#F7F7F5] light:text-[#171717] group-hover:text-[#9B1C22] dark:group-hover:text-[#B83240] transition-colors">
+                  <span className="text-base sm:text-lg font-medium text-[#F7F7F5] light:text-[#171717] group-hover:text-[#F20D0D] transition-colors">
                     {item.question}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-[#181816] light:bg-[#EFEDE8] border border-[#282825] light:border-[#E3E0D8] flex items-center justify-center shrink-0 group-hover:border-[#9B1C22] transition-colors">
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-8 h-8 rounded-full bg-[#181816] light:bg-[#EFEDE8] border border-[#282825] light:border-[#E3E0D8] flex items-center justify-center shrink-0 group-hover:border-[#F20D0D] transition-colors"
+                  >
                     {isOpen ? (
-                      <Minus className="w-4 h-4 text-[#9B1C22]" />
+                      <Minus className="w-4 h-4 text-[#F20D0D]" />
                     ) : (
-                      <Plus className="w-4 h-4 text-[#8E8D89] light:text-[#737373] group-hover:text-[#9B1C22] dark:group-hover:text-[#B83240]" />
+                      <Plus className="w-4 h-4 text-[#8E8D89] light:text-[#737373] group-hover:text-[#F20D0D]" />
                     )}
-                  </div>
+                  </motion.div>
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -75,7 +79,7 @@ export const FAQ: React.FC = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
                       <p className="pt-3 pb-2 text-sm text-[#8E8D89] light:text-[#737373] leading-relaxed max-w-2xl">

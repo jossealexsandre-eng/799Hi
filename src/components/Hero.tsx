@@ -171,7 +171,7 @@ export const Hero: React.FC<HeroProps> = ({
             className="lg:col-span-5 flex flex-col items-start text-left"
           >
             <h1 className="text-4xl sm:text-5xl xl:text-[56px] font-normal tracking-tight text-[#171717] dark:text-[#F7F7F5] leading-[1.1] mb-5 font-editorial">
-              Buat website yang rapi, cepat, dan sesuai karaktermu.
+              Your Website, Your Personal Branding.
             </h1>
 
             <p className="text-base text-[#555552] dark:text-[#8E8D89] leading-relaxed mb-8 font-normal">
@@ -218,12 +218,18 @@ export const Hero: React.FC<HeroProps> = ({
                       <button
                         key={p.id}
                         onClick={() => goToSlide(idx)}
-                        className={`relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap cursor-pointer overflow-hidden ${
-                          isActive
-                            ? 'bg-[#171717] text-white dark:bg-[#F7F7F5] dark:text-[#171717] font-semibold shadow-2xs'
+                        className={`relative px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap cursor-pointer ${isActive
+                            ? 'text-white dark:text-[#171717] font-semibold'
                             : 'text-[#6E6D68] dark:text-[#8E8D89] hover:text-[#171717] dark:hover:text-white'
-                        }`}
+                          }`}
                       >
+                        {isActive && (
+                          <motion.div
+                            layoutId="heroActiveProjectTab"
+                            className="absolute inset-0 rounded-lg bg-[#171717] dark:bg-[#F7F7F5] shadow-xs"
+                            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                          />
+                        )}
                         <span className="relative z-10">{p.tabLabel}</span>
                       </button>
                     );
@@ -231,20 +237,24 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
 
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.94 }}
                     onClick={prevSlide}
                     aria-label="Proyek Sebelumnya"
-                    className="p-2 rounded-xl bg-white dark:bg-[#161615] border border-[#E4E2D8] dark:border-[#262624] text-[#555] dark:text-[#AAA] hover:text-[#171717] dark:hover:text-white hover:border-[#171717]/30 transition-all shadow-2xs cursor-pointer"
+                    className="p-2 rounded-xl bg-white dark:bg-[#161615] border border-[#E4E2D8] dark:border-[#262624] text-[#555] dark:text-[#AAA] hover:text-[#171717] dark:hover:text-white hover:border-[#171717]/30 transition-colors shadow-2xs cursor-pointer"
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.94 }}
                     onClick={nextSlide}
                     aria-label="Proyek Selanjutnya"
-                    className="p-2 rounded-xl bg-white dark:bg-[#161615] border border-[#E4E2D8] dark:border-[#262624] text-[#555] dark:text-[#AAA] hover:text-[#171717] dark:hover:text-white hover:border-[#171717]/30 transition-all shadow-2xs cursor-pointer"
+                    className="p-2 rounded-xl bg-white dark:bg-[#161615] border border-[#E4E2D8] dark:border-[#262624] text-[#555] dark:text-[#AAA] hover:text-[#171717] dark:hover:text-white hover:border-[#171717]/30 transition-colors shadow-2xs cursor-pointer"
                   >
                     <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
+                  </motion.button>
                 </div>
               </div>
 

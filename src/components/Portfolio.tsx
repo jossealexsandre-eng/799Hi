@@ -261,15 +261,22 @@ export const Portfolio: React.FC<PortfolioProps> = () => {
               <button
                 key={tab.id}
                 onClick={() => handleFilterChange(tab.id)}
-                className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-2 ${
+                className={`relative px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-colors cursor-pointer flex items-center gap-2 ${
                   isActive
-                    ? 'bg-[#171717] text-white dark:bg-[#F7F7F5] dark:text-[#171717] shadow-sm'
-                    : 'bg-[#F5F4F0] dark:bg-[#161615] text-[#666] dark:text-[#999] hover:text-[#171717] dark:hover:text-white border border-[#E4E2D8] dark:border-[#262624]'
+                    ? 'text-white dark:text-[#171717]'
+                    : 'text-[#666] dark:text-[#999] hover:text-[#171717] dark:hover:text-white bg-[#F5F4F0] dark:bg-[#161615] border border-[#E4E2D8] dark:border-[#262624]'
                 }`}
               >
-                <span>{tab.label}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="activePortfolioFilter"
+                    className="absolute inset-0 rounded-full bg-[#171717] dark:bg-[#F7F7F5] shadow-sm -z-0"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{tab.label}</span>
                 <span
-                  className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
+                  className={`relative z-10 text-[10px] font-mono px-1.5 py-0.5 rounded-full transition-colors ${
                     isActive
                       ? 'bg-white/20 text-white dark:bg-black/15 dark:text-[#171717]'
                       : 'bg-black/5 dark:bg-white/5 text-[#888]'
@@ -429,9 +436,11 @@ export const Portfolio: React.FC<PortfolioProps> = () => {
             viewport={{ once: true }}
             className="mt-12 flex justify-center"
           >
-            <button
+            <motion.button
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => setShowAll((prev) => !prev)}
-              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#171717] hover:bg-[#F20D0D] text-white dark:bg-[#F7F7F5] dark:text-[#171717] dark:hover:bg-[#F20D0D] dark:hover:text-white text-xs font-semibold uppercase tracking-wider transition-all shadow-md cursor-pointer"
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#171717] hover:bg-[#F20D0D] text-white dark:bg-[#F7F7F5] dark:text-[#171717] dark:hover:bg-[#F20D0D] dark:hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow-md cursor-pointer"
             >
               <span>
                 {showAll
@@ -443,7 +452,7 @@ export const Portfolio: React.FC<PortfolioProps> = () => {
               ) : (
                 <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" />
               )}
-            </button>
+            </motion.button>
           </motion.div>
         )}
       </div>
