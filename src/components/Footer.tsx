@@ -34,15 +34,6 @@ export const Footer: React.FC = () => {
     { label: 'Kontak', href: '#contact' },
   ];
 
-  const serviceLinks = [
-    { label: 'Personal Portfolio', path: '/services/personal-portfolio' },
-    { label: 'Wedding Invitation', path: '/services/wedding-invitation' },
-    { label: 'Cafe & Restaurant', path: '/services/cafe-restaurant' },
-    { label: 'Company Profile', path: '/services/company-profile' },
-    { label: 'Business Store', path: '/services/business-store' },
-    { label: 'Custom Website', path: '/services/custom-website' },
-  ];
-
   const handleLinkClick = (href: string) => {
     if (location.pathname !== '/') {
       navigate('/' + href);
@@ -62,7 +53,7 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-14 border-b border-[#1F1F1D] light:border-[#DCD8D0]">
           {/* Brand info */}
           <motion.div
-            className="md:col-span-4"
+            className="md:col-span-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -86,45 +77,19 @@ export const Footer: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Direct Service Category Links */}
-          <motion.div
-            className="md:col-span-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={0.08}
-            variants={fadeUp}
-          >
-            <span className="text-xs font-mono uppercase tracking-wider text-[#F7F7F5] light:text-[#171717] block mb-4 font-semibold">
-              Kategori Layanan
-            </span>
-            <ul className="space-y-2.5 text-xs">
-              {serviceLinks.map((srv) => (
-                <li key={srv.path}>
-                  <Link
-                    to={srv.path}
-                    className="hover:text-[#F20D0D] light:hover:text-[#F20D0D] transition-colors inline-flex items-center gap-1"
-                  >
-                    <span>{srv.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
           {/* Quick Nav Links */}
           <motion.div
-            className="md:col-span-2"
+            className="md:col-span-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            custom={0.14}
+            custom={0.1}
             variants={fadeUp}
           >
             <span className="text-xs font-mono uppercase tracking-wider text-[#F7F7F5] light:text-[#171717] block mb-4 font-semibold">
               Navigasi
             </span>
-            <div className="grid grid-cols-2 md:grid-cols-1 gap-2 text-xs">
+            <div className="grid grid-cols-2 gap-2.5 text-xs">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
@@ -133,9 +98,10 @@ export const Footer: React.FC = () => {
                     e.preventDefault();
                     handleLinkClick(link.href);
                   }}
-                  className="hover:text-[#F20D0D] light:hover:text-[#F20D0D] transition-colors py-0.5 inline-flex items-center gap-1"
+                  className="hover:text-[#F20D0D] light:hover:text-[#F20D0D] transition-colors py-1 inline-flex items-center gap-1.5"
                 >
-                  {link.label}
+                  <span className="w-1 h-1 rounded-full bg-[#F20D0D]/40" />
+                  <span>{link.label}</span>
                 </a>
               ))}
             </div>
