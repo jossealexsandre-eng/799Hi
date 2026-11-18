@@ -119,7 +119,7 @@ export const Process: React.FC = () => {
               <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-[#181816] light:bg-[#FFFFFF] border-2 border-[#9B1C22]" />
 
               <span className="text-xs font-mono font-semibold text-[#9B1C22] dark:text-[#B83240] block mb-1">
-                {step.number} — {step.title}
+                {step.number}. {step.title}
               </span>
 
               <h3 className="text-base font-medium text-[#F7F7F5] light:text-[#171717] mb-1">

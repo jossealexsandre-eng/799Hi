@@ -86,7 +86,12 @@ export const PackageCard: React.FC<PackageCardProps> = ({
             </span>
           </div>
 
-          <div className="mt-2 flex items-baseline gap-1">
+          <div className="mt-2 flex items-baseline gap-2.5 flex-wrap">
+            {pkg.originalPriceFormatted && (
+              <span className="text-base sm:text-lg font-mono text-[#8E8D89] light:text-[#888888] line-through decoration-[#F20D0D]/80">
+                {pkg.originalPriceFormatted}
+              </span>
+            )}
             <span className="text-3xl sm:text-4xl font-editorial font-normal tracking-tight text-[#F7F7F5] light:text-[#171717]">
               {pkg.priceFormatted || pkg.price}
             </span>

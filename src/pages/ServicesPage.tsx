@@ -30,7 +30,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    document.title = 'Layanan & Paket Website — 799Hi Creatives';
+    document.title = 'Layanan & Paket Website | 799Hi Creatives';
   }, []);
 
   const handleScrollToOverview = () => {
@@ -137,15 +137,14 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
       <section className="pt-20 sm:pt-28 pb-16 sm:pb-24 relative overflow-hidden border-b border-[#242421] light:border-[#EAE7E1]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#F20D0D]/30 bg-[#F20D0D]/10 text-[#F20D0D] text-[11px] font-mono uppercase tracking-[0.16em] mb-6 font-semibold"
+              transition={{ duration: 0.45 }}
+              className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-4 font-medium"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F20D0D]" />
-              <span>Layanan Pembuatan Website</span>
-            </motion.div>
+              LAYANAN PEMBUATAN WEBSITE
+            </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 18 }}

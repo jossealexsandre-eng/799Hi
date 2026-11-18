@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight, Check } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Check, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface PortfolioProps {
   onOpenLiveWedding?: () => void;
@@ -22,6 +22,7 @@ export interface ProjectData {
   liveUrl: string;
   displayUrl: string;
   deliverables: string[];
+  originalPrice?: string;
   startingPrice: string;
 }
 
@@ -36,7 +37,7 @@ export const LIVE_PROJECTS: ProjectData[] = [
     filterLabel: 'Personal Portfolio',
     scope: 'Dark Mode · Dwibahasa ID/EN · Galeri Sertifikat · CV PDF',
     description:
-      'Website portfolio personal untuk mahasiswa Fakultas Hukum & Bisnis Digital Universitas Kristen Maranatha. Dilengkapi fitur beralih tema terang/gelap (Dark Mode), pengalih bahasa Indonesia & Inggris, galeri sertifikat terfilter, serta lini masa organisasi dan prestasi.',
+      'Website portfolio personal untuk mahasiswa Fakultas Hukum & Bisnis Digital Universitas Kristen Maranatha. Dilengkapi fitur beralih tema terang dan gelap (Dark Mode), pilihan bahasa Indonesia & Inggris, galeri sertifikat dengan filter kategori, serta lini masa organisasi dan prestasi.',
     image: '/images/project-angelus.png',
     liveUrl: 'https://angelusmatthew.vercel.app/',
     displayUrl: 'angelusmatthew.vercel.app',
@@ -48,7 +49,8 @@ export const LIVE_PROJECTS: ProjectData[] = [
       'Unduh CV Resmi Format PDF',
       'Formulir Kontak & Responsif',
     ],
-    startingPrice: 'Mulai Rp549.000',
+    originalPrice: 'Rp999.000',
+    startingPrice: 'Rp899.000',
   },
   {
     id: 'yonathan',
@@ -60,7 +62,7 @@ export const LIVE_PROJECTS: ProjectData[] = [
     filterLabel: 'Personal Portfolio',
     scope: 'Tipografi Editorial Bold · Pengalaman Kerja · Jejak Organisasi',
     description:
-      'Website portfolio dan resume bergaya editorial monokrom untuk mahasiswa Marketing Management Universitas Kristen Maranatha. Dirancang dengan tipografi kontras tinggi, struktur riwayat pengalaman kerja, rekam jejak organisasi, dan akses unduh CV langsung.',
+      'Website portfolio dan resume bergaya editorial monokrom untuk mahasiswa Marketing Management Universitas Kristen Maranatha. Dirancang dengan tipografi kontras tinggi, struktur riwayat pengalaman kerja, rekam jejak organisasi, dan tombol unduh CV.',
     image: '/images/project-yonathan.png',
     liveUrl: 'https://yonathanpiri-portfolio.vercel.app/',
     displayUrl: 'yonathanpiri-portfolio.vercel.app',
@@ -77,14 +79,14 @@ export const LIVE_PROJECTS: ProjectData[] = [
   {
     id: 'duitmoo',
     number: '03',
-    title: 'DuitMoo — Smart Budgeting Platform',
+    title: 'DuitMoo Smart Budgeting',
     client: 'Personal Finance & Smart Budgeting Platform',
     category: 'CUSTOM WEBSITE · WEB APPLICATION',
     categorySlug: 'custom-website',
     filterLabel: 'Custom Website',
     scope: 'Alokasi Anggaran 60/30/10 · Pencatatan Transaksi · Multi-User App',
     description:
-      'Aplikasi web pencatatan keuangan pribadi dan pembagian anggaran otomatis (60% Kebutuhan, 30% Keinginan, 10% Darurat). Dilengkapi papan simulasi keuangan interaktif, pencatatan belanja harian, autentikasi pengguna, serta dukungan PWA untuk HP dan desktop.',
+      'Aplikasi web pencatatan keuangan pribadi dan pembagian anggaran otomatis (60% Kebutuhan, 30% Keinginan, 10% Darurat). Dilengkapi papan simulasi keuangan interaktif, pencatatan belanja harian, autentikasi pengguna, serta dukungan aplikasi di HP dan desktop.',
     image: '/images/project-duitmoo.png',
     liveUrl: 'https://duitmoo-production.up.railway.app',
     displayUrl: 'duitmoo-production.up.railway.app',
@@ -108,7 +110,7 @@ export const LIVE_PROJECTS: ProjectData[] = [
     filterLabel: 'Personal Portfolio',
     scope: 'Personal Branding · Showcase Karya · Unduh CV',
     description:
-      'Portfolio personal branding untuk kreator konten visual dan pengembang web di Bandung. Menampilkan tata letak tipografi editorial yang tegas, kurasi karya terpilih, lini masa pengalaman, serta akses unduh CV.',
+      'Portfolio personal untuk kreator konten visual dan pengembang web di Bandung. Menampilkan tata letak tipografi editorial yang tegas, kurasi karya terpilih, lini masa pengalaman, serta akses unduh CV.',
     image: '/images/project-alexsander.png',
     liveUrl: 'https://alexsander-portfolio-virid.vercel.app/',
     displayUrl: 'alexsander-portfolio-virid.vercel.app',
@@ -120,7 +122,8 @@ export const LIVE_PROJECTS: ProjectData[] = [
       'Saluran Kontak WhatsApp Langsung',
       'Tampilan Responsif & Cepat',
     ],
-    startingPrice: 'Mulai Rp549.000',
+    originalPrice: 'Rp999.000',
+    startingPrice: 'Rp899.000',
   },
   {
     id: 'rainer',
@@ -144,7 +147,8 @@ export const LIVE_PROJECTS: ProjectData[] = [
       'Tata Letak Bersih & Terstruktur',
       'Adaptasi Responsif Mobile',
     ],
-    startingPrice: 'Mulai Rp549.000',
+    originalPrice: 'Rp999.000',
+    startingPrice: 'Rp899.000',
   },
   {
     id: 'wheels',
@@ -206,11 +210,20 @@ const FILTER_TABS = [
 
 export const Portfolio: React.FC<PortfolioProps> = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const filteredProjects =
     activeFilter === 'all'
       ? LIVE_PROJECTS
       : LIVE_PROJECTS.filter((p) => p.categorySlug === activeFilter);
+
+  const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 4);
+  const hasMoreProjects = filteredProjects.length > 4;
+
+  const handleFilterChange = (tabId: string) => {
+    setActiveFilter(tabId);
+    setShowAll(false);
+  };
 
   return (
     <section
@@ -221,29 +234,21 @@ export const Portfolio: React.FC<PortfolioProps> = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F20D0D]" />
-              <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#F20D0D]">
-                KARYA &amp; PORTFOLIO
-              </span>
-            </div>
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-2.5 font-medium">
+              KARYA &amp; PORTFOLIO
+            </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-normal tracking-tight text-[#171717] dark:text-[#F7F7F5] mb-4">
-              Proyek nyata yang telah kami bangun.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-normal tracking-tight text-[#171717] dark:text-[#F7F7F5] mb-3">
+              Proyek website yang sudah tayang.
             </h2>
 
             <p className="text-base text-[#666560] dark:text-[#8E8D89] leading-relaxed">
-              Seluruh proyek di bawah ini adalah website produksi aktif yang dirancang dan dikembangkan oleh 799Hi. Klik pada proyek untuk mengunjungi website secara langsung.
+              Seluruh proyek di bawah ini adalah website klien nyata yang telah kami bangun dan publikasikan. Klik pada kartu proyek untuk membuka websitenya secara langsung.
             </p>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs font-mono text-[#666] dark:text-[#999]">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span>{LIVE_PROJECTS.length} Proyek Live &amp; Aktif</span>
           </div>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Category Filter Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 border-b border-[#EAE8E2] dark:border-[#242421]">
           {FILTER_TABS.map((tab) => {
             const isActive = activeFilter === tab.id;
@@ -255,10 +260,10 @@ export const Portfolio: React.FC<PortfolioProps> = () => {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveFilter(tab.id)}
-                className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-colors cursor-pointer flex items-center gap-2 ${
+                onClick={() => handleFilterChange(tab.id)}
+                className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-2 ${
                   isActive
-                    ? 'bg-[#171717] text-white dark:bg-[#F7F7F5] dark:text-[#171717]'
+                    ? 'bg-[#171717] text-white dark:bg-[#F7F7F5] dark:text-[#171717] shadow-sm'
                     : 'bg-[#F5F4F0] dark:bg-[#161615] text-[#666] dark:text-[#999] hover:text-[#171717] dark:hover:text-white border border-[#E4E2D8] dark:border-[#262624]'
                 }`}
               >
@@ -277,127 +282,170 @@ export const Portfolio: React.FC<PortfolioProps> = () => {
           })}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-          {filteredProjects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.45, delay: (idx % 2) * 0.06 }}
-              className="h-full flex flex-col"
-            >
-              <div className="group relative rounded-2xl bg-white dark:bg-[#141413] border border-[#E6E4DC] dark:border-[#262624] hover:border-[#F20D0D]/50 overflow-hidden flex flex-col justify-between transition-all duration-300 h-full shadow-xs">
-                {/* Browser Frame with Authentic Screenshot */}
-                <div className="relative overflow-hidden bg-[#F7F6F2] dark:bg-[#181816] border-b border-[#E6E4DC] dark:border-[#262624]">
-                  {/* Browser Bar */}
-                  <div className="h-9 px-4 bg-[#F2F0EB] dark:bg-[#1C1C1A] flex items-center justify-between border-b border-[#E4E2D8] dark:border-[#262624]">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
-                      <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
-                      <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
+        {/* Projects Grid (Default 4, Expandable) */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10"
+        >
+          <AnimatePresence mode="popLayout">
+            {visibleProjects.map((project, idx) => (
+              <motion.div
+                layout
+                key={project.id}
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 16, scale: 0.98 }}
+                transition={{
+                  duration: 0.5,
+                  delay: (idx % 2) * 0.06,
+                  ease: [0.22, 1, 0.36, 1] as any,
+                }}
+                className="h-full flex flex-col"
+              >
+                <div className="group relative rounded-2xl bg-white dark:bg-[#141413] border border-[#E2E0D8] dark:border-[#262624] hover:border-[#F20D0D]/50 overflow-hidden flex flex-col justify-between transition-all duration-300 h-full shadow-[0_18px_45px_-15px_rgba(17,17,17,0.12),0_6px_18px_-6px_rgba(17,17,17,0.06)] hover:shadow-[0_26px_60px_-15px_rgba(17,17,17,0.2),0_10px_25px_-8px_rgba(242,13,13,0.1)] dark:shadow-[0_22px_50px_-15px_rgba(0,0,0,0.75)] hover:-translate-y-1">
+                  {/* Browser Frame with Authentic Screenshot */}
+                  <div className="relative overflow-hidden bg-[#F7F6F2] dark:bg-[#181816] border-b border-[#E6E4DC] dark:border-[#262624]">
+                    {/* Browser Bar */}
+                    <div className="h-9 px-4 bg-[#F2F0EB] dark:bg-[#1C1C1A] flex items-center justify-between border-b border-[#E4E2D8] dark:border-[#262624]">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
+                        <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
+                        <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
+                      </div>
+
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-0.5 rounded-md bg-white dark:bg-[#121211] text-[10px] font-mono text-[#666] dark:text-[#888] hover:text-[#F20D0D] flex items-center gap-1.5 border border-[#DDD] dark:border-[#262624] transition-colors"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        <span>{project.displayUrl}</span>
+                      </a>
+
+                      <span className="text-[10px] font-mono text-[#888]">
+                        {project.number}
+                      </span>
                     </div>
 
+                    {/* Screenshot */}
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-0.5 rounded-md bg-white dark:bg-[#121211] text-[10px] font-mono text-[#666] dark:text-[#888] hover:text-[#F20D0D] flex items-center gap-1.5 border border-[#DDD] dark:border-[#262624] transition-colors"
+                      className="block relative aspect-[16/10] overflow-hidden"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      <span>{project.displayUrl}</span>
+                      <img
+                        src={project.image}
+                        alt={`${project.title} ${project.client}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                      />
                     </a>
-
-                    <span className="text-[10px] font-mono text-[#888]">
-                      {project.number}
-                    </span>
                   </div>
 
-                  {/* Screenshot */}
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block relative aspect-[16/10] overflow-hidden"
-                  >
-                    <img
-                      src={project.image}
-                      alt={`${project.title} — ${project.client}`}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                    />
-                  </a>
-                </div>
+                  {/* Project Details */}
+                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
+                    <div>
+                      {/* Meta header */}
+                      <div className="flex items-center justify-between text-xs mb-2.5">
+                        <span className="font-mono text-[#F20D0D] text-[11px] tracking-wider uppercase font-medium">
+                          {project.category}
+                        </span>
+                        <span className="font-mono text-[11px] text-[#888]">
+                          LIVE PRODUCTION
+                        </span>
+                      </div>
 
-                {/* Project Details */}
-                <div className="p-6 sm:p-8 flex flex-col justify-between flex-grow">
-                  <div>
-                    {/* Meta header */}
-                    <div className="flex items-center justify-between text-xs mb-2.5">
-                      <span className="font-mono text-[#F20D0D] text-[11px] tracking-wider uppercase font-medium">
-                        {project.category}
-                      </span>
-                      <span className="font-mono text-[11px] text-[#888]">
-                        LIVE PRODUCTION
-                      </span>
-                    </div>
+                      {/* Title & Client/Subtitle */}
+                      <h3 className="text-2xl font-editorial font-normal text-[#171717] dark:text-[#F7F7F5] mb-1">
+                        {project.title}
+                      </h3>
 
-                    {/* Title & Client/Subtitle */}
-                    <h3 className="text-2xl font-editorial font-normal text-[#171717] dark:text-[#F7F7F5] mb-1">
-                      {project.title}
-                    </h3>
+                      <p className="text-xs font-medium text-[#B8A99A] mb-3">
+                        {project.client} · {project.scope}
+                      </p>
 
-                    <p className="text-xs font-medium text-[#B8A99A] mb-3">
-                      {project.client} · {project.scope}
-                    </p>
+                      <p className="text-xs sm:text-sm text-[#555] dark:text-[#8E8D89] leading-relaxed mb-6">
+                        {project.description}
+                      </p>
 
-                    <p className="text-xs sm:text-sm text-[#555] dark:text-[#8E8D89] leading-relaxed mb-6">
-                      {project.description}
-                    </p>
-
-                    {/* Deliverables List */}
-                    <div className="space-y-2 mb-6">
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#888] block mb-2">
-                        Fitur yang Diimplementasikan
-                      </span>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#444] dark:text-[#C5C3BC]">
-                        {project.deliverables.map((item, dIdx) => (
-                          <div key={dIdx} className="flex items-center gap-2">
-                            <Check className="w-3.5 h-3.5 text-[#F20D0D] shrink-0" />
-                            <span className="truncate">{item}</span>
-                          </div>
-                        ))}
+                      {/* Deliverables List */}
+                      <div className="space-y-2 mb-6">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#888] block mb-2">
+                          Fitur yang Diimplementasikan
+                        </span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#444] dark:text-[#C5C3BC]">
+                          {project.deliverables.map((item, dIdx) => (
+                            <div key={dIdx} className="flex items-center gap-2">
+                              <Check className="w-3.5 h-3.5 text-[#F20D0D] shrink-0" />
+                              <span className="truncate">{item}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Bottom Action Footer */}
-                  <div className="pt-5 border-t border-[#EAE8E2] dark:border-[#242421] flex items-center justify-between gap-3">
-                    <div>
-                      <span className="block text-[10px] font-mono text-[#888] uppercase">
-                        Kategori Layanan
-                      </span>
-                      <span className="text-sm font-semibold text-[#171717] dark:text-white font-mono">
-                        {project.startingPrice}
-                      </span>
+                    {/* Bottom Action Footer */}
+                    <div className="pt-5 border-t border-[#EAE8E2] dark:border-[#242421] flex items-center justify-between gap-3">
+                      <div>
+                        <span className="block text-[10px] font-mono text-[#888] uppercase">
+                          Paket Layanan
+                        </span>
+                        <div className="flex items-baseline gap-2 mt-0.5">
+                          {project.originalPrice && (
+                            <span className="text-xs font-mono text-[#888] line-through decoration-[#F20D0D]/80">
+                              {project.originalPrice}
+                            </span>
+                          )}
+                          <span className="text-sm sm:text-base font-bold text-[#171717] dark:text-white font-mono">
+                            {project.startingPrice}
+                          </span>
+                        </div>
+                      </div>
+
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#171717] hover:bg-[#F20D0D] text-white dark:bg-[#F7F7F5] dark:text-[#0F0F0E] dark:hover:bg-[#F20D0D] dark:hover:text-white text-xs font-semibold tracking-wide transition-all cursor-pointer"
+                      >
+                        <span>Kunjungi Website</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                      </a>
                     </div>
-
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#171717] hover:bg-[#F20D0D] text-white dark:bg-[#F7F7F5] dark:text-[#0F0F0E] dark:hover:bg-[#F20D0D] dark:hover:text-white text-xs font-semibold tracking-wide transition-colors cursor-pointer"
-                    >
-                      <span>Kunjungi Website</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* "Lihat Semua" / "Tampilkan Lebih Sedikit" Button */}
+        {hasMoreProjects && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 flex justify-center"
+          >
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#171717] hover:bg-[#F20D0D] text-white dark:bg-[#F7F7F5] dark:text-[#171717] dark:hover:bg-[#F20D0D] dark:hover:text-white text-xs font-semibold uppercase tracking-wider transition-all shadow-md cursor-pointer"
+            >
+              <span>
+                {showAll
+                  ? 'Tampilkan Lebih Sedikit'
+                  : `Lihat Semua Karya (${filteredProjects.length})`}
+              </span>
+              {showAll ? (
+                <ChevronUp className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+              ) : (
+                <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+              )}
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -62,7 +62,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     if (serviceData) {
-      document.title = `${serviceData.title} — 799Hi Creatives`;
+      document.title = `${serviceData.title} | 799Hi Creatives`;
       // Reset selected package to Standard
       setSelectedPackage(serviceData.packages[1] || serviceData.packages[0]);
     }
@@ -174,15 +174,14 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="max-w-3xl">
             {/* Category Eyebrow */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#F20D0D]/30 bg-[#F20D0D]/10 text-[#F20D0D] text-[11px] font-mono uppercase tracking-[0.16em] mb-4 font-semibold"
+              transition={{ duration: 0.45 }}
+              className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-3 font-medium"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F20D0D]" />
-              <span>{serviceData.eyebrow}</span>
-            </motion.div>
+              {serviceData.eyebrow}
+            </motion.span>
 
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
@@ -266,7 +265,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-2xl bg-[#161615] light:bg-[#FFFFFF] border border-[#282825] light:border-[#E3E0D8] hover:border-[#F20D0D]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xs"
+                  className="group rounded-2xl bg-[#161615] light:bg-[#FFFFFF] border border-[#282825] light:border-[#E2E0D8] hover:border-[#F20D0D]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-[0_18px_45px_-15px_rgba(17,17,17,0.12)] hover:shadow-[0_24px_55px_-15px_rgba(17,17,17,0.2)] hover:-translate-y-1"
                 >
                   <div>
                     <div className="h-8 px-3.5 bg-[#1C1C1A] light:bg-[#F2F0EB] border-b border-[#262624] light:border-[#E4E2D8] flex items-center justify-between">
@@ -287,7 +286,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
                         src={project.image}
                         alt={project.title}
                         loading="lazy"
-                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                        className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
                       />
                     </div>
                   </div>
@@ -300,6 +299,16 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
                       <p className="text-xs text-[#8E8D89] light:text-[#737373] mt-0.5">
                         {project.scope}
                       </p>
+                      <div className="flex items-baseline gap-2 mt-2">
+                        {project.originalPrice && (
+                          <span className="text-xs font-mono text-[#888] line-through decoration-[#F20D0D]/80">
+                            {project.originalPrice}
+                          </span>
+                        )}
+                        <span className="text-xs font-mono font-bold text-[#F20D0D]">
+                          {project.startingPrice}
+                        </span>
+                      </div>
                     </div>
                     <span className="inline-flex items-center gap-1 px-3.5 py-2 rounded-full bg-[#171717] text-white dark:bg-[#F7F7F5] dark:text-[#171717] text-[11px] font-semibold shrink-0 group-hover:bg-[#F20D0D] group-hover:text-white transition-colors">
                       <span>Lihat Live</span>

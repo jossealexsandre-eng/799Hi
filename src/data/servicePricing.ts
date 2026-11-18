@@ -12,6 +12,7 @@ export interface ServicePackageItem {
   tier: 'basic' | 'standard' | 'premium';
   price: number;
   priceFormatted: string;
+  originalPriceFormatted?: string;
   isStartingPrice?: boolean;
   pricePrefix?: string; // e.g. "Mulai " or "Mulai dari "
   subtitle: string;
@@ -373,7 +374,7 @@ export const SERVICE_PRICING_DATA: Record<string, ServiceDetailData> = {
     number: '01',
     title: 'Personal Portfolio',
     categoryName: 'Personal Portfolio',
-    eyebrow: '01 — PERSONAL PORTFOLIO',
+    eyebrow: 'PERSONAL PORTFOLIO',
     heroHeadline: 'Your Story, Your Digital Identity.',
     heroDescription:
       'Website pribadi yang dirancang untuk menampilkan profil, pengalaman, karya, pencapaian, dan identitas profesional dalam satu tempat. Cocok bagi individu yang ingin memperkenalkan dirinya secara lebih profesional melalui website personal.',
@@ -436,6 +437,7 @@ export const SERVICE_PRICING_DATA: Record<string, ServiceDetailData> = {
         tier: 'standard',
         price: 899000,
         priceFormatted: 'Rp899.000',
+        originalPriceFormatted: 'Rp999.000',
         badge: 'Rekomendasi',
         subtitle: 'Personal branding kuat dengan download CV & timeline',
         description:
@@ -548,7 +550,7 @@ export const SERVICE_PRICING_DATA: Record<string, ServiceDetailData> = {
     number: '02',
     title: 'Wedding Invitation',
     categoryName: 'Wedding Invitation',
-    eyebrow: '02 — WEDDING INVITATION',
+    eyebrow: 'WEDDING INVITATION',
     heroHeadline: 'Your Special Day, Beautifully Shared.',
     heroDescription:
       'Undangan pernikahan digital yang praktis dan elegan, dilengkapi informasi acara, galeri kenangan, serta berbagai fitur yang memudahkan tamu.',
@@ -699,7 +701,7 @@ export const SERVICE_PRICING_DATA: Record<string, ServiceDetailData> = {
     number: '03',
     title: 'Cafe & Restaurant',
     categoryName: 'Cafe & Restaurant',
-    eyebrow: '03 — CAFE & RESTAURANT',
+    eyebrow: 'CAFE & RESTAURANT',
     heroHeadline: 'Bring Your Dining Experience Online.',
     heroDescription:
       'Website untuk memperkenalkan usaha kuliner, menampilkan menu, informasi tempat, promosi, dan memudahkan pelanggan menghubungi bisnis.',
@@ -854,7 +856,7 @@ export const SERVICE_PRICING_DATA: Record<string, ServiceDetailData> = {
     number: '04',
     title: 'Company Profile',
     categoryName: 'Company Profile',
-    eyebrow: '04 — COMPANY PROFILE',
+    eyebrow: 'COMPANY PROFILE',
     heroHeadline: 'Build Trust Through Your Digital Presence.',
     heroDescription:
       'Website profesional untuk memperkenalkan identitas, layanan, kegiatan, pengalaman, dan pencapaian suatu perusahaan atau organisasi.',
@@ -1015,7 +1017,7 @@ export const SERVICE_PRICING_DATA: Record<string, ServiceDetailData> = {
     number: '05',
     title: 'Business Store',
     categoryName: 'Business Store',
-    eyebrow: '05 — BUSINESS STORE',
+    eyebrow: 'BUSINESS STORE',
     heroHeadline: 'Showcase Your Products. Grow Your Business.',
     heroDescription:
       'Website katalog dan toko online yang memudahkan pelanggan menemukan produk, melihat informasi, serta melakukan pemesanan sesuai kebutuhan bisnis.',
@@ -1174,7 +1176,7 @@ export const SERVICE_PRICING_DATA: Record<string, ServiceDetailData> = {
     number: '06',
     title: 'Custom Website',
     categoryName: 'Custom Website',
-    eyebrow: '06 — CUSTOM WEBSITE',
+    eyebrow: 'CUSTOM WEBSITE',
     heroHeadline: 'Your Idea, Built Into Reality.',
     heroDescription:
       'Layanan pengembangan website atau aplikasi berbasis web dengan fitur khusus, alur kerja, dan sistem yang dirancang sesuai kebutuhan proyek.',

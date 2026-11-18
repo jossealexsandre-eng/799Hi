@@ -73,7 +73,7 @@ export const PackageConfirmModal: React.FC<PackageConfirmModalProps> = ({
                 {selectedPackage.name} Package Selected
               </h3>
               <p className="text-lg font-mono font-medium text-[#F20D0D]">
-                {categoryName} Website — {selectedPackage.priceFormatted || selectedPackage.price}
+                {categoryName} Website ({selectedPackage.priceFormatted || selectedPackage.price})
               </p>
             </div>
 
