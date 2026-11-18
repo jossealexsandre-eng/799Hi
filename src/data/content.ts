@@ -319,41 +319,41 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: 'Berapa lama proses pembuatan website?',
     answer:
-      'Durasi pengerjaan tergantung pada ruang lingkup. Website 1 halaman sederhana umumnya selesai dalam 3–5 hari kerja, sedangkan proyek multi-halaman atau kustom membutuhkan waktu 5–15 hari kerja.',
+      'Durasi pengerjaan menyesuaikan kategori dan kelengkapan materi. Undangan pernikahan digital & portofolio 1 halaman umumnya selesai dalam 2 sampai 5 hari kerja, website bisnis & toko katalog 5 sampai 10 hari kerja, sedangkan aplikasi web custom disesuaikan dengan kompleksitas sistem.',
   },
   {
-    question: 'Bisakah saya mengajukan referensi desain sendiri?',
+    question: 'Bagaimana sistem pembayaran di 799Hi Creatives?',
     answer:
-      'Tentu bisa. Anda dapat memberikan tautan referensi, moodboard, atau contoh website yang Anda sukai untuk kami jadikan acuan estetika.',
+      'Kami menggunakan sistem pembayaran 50/50. Pembayaran uang muka (DP) sebesar 50% dilakukan di awal sebelum pengerjaan dimulai, dan pelunasan sisa 50% dilakukan setelah website selesai ditinjau sebelum dipublikasikan.',
   },
   {
-    question: 'Apakah domain dan hosting sudah termasuk?',
+    question: 'Apakah domain (.com / .id) sudah termasuk?',
     answer:
-      'Domain & hosting sudah termasuk pada paket Premium (1 tahun pertama). Untuk paket Starter atau Pro, domain & hosting terpisah atau dapat kami bantu siapkan dengan mudah.',
+      'Gratis 1 custom domain (.com atau .id) selama 1 tahun pertama sudah termasuk pada paket Premium untuk Personal Portfolio, Cafe & Restaurant, Company Profile, dan Business Store. Untuk paket Basic dan Standard, domain dapat ditambahkan melalui fitur add-on.',
   },
   {
-    question: 'Berapa kali revisi yang diberikan?',
+    question: 'Berapa kali revisi yang didapatkan?',
     answer:
-      'Setiap paket memiliki batas revisi yang transparan (2×, 3×, atau 5× revisi) untuk menjaga kualitas hasil dan ketepatan waktu peluncuran.',
+      'Setiap tingkatan paket sudah mencakup revisi minor terarah: 1 kali revisi untuk paket Basic, 2 kali revisi untuk paket Standard, dan 3 kali revisi untuk paket Premium.',
   },
   {
-    question: 'Bisakah mendesain ulang website saya yang sudah ada?',
+    question: 'Bisakah saya mengajukan referensi tampilan sendiri?',
     answer:
-      'Tentu bisa. Kami dapat memodernisasi tampilan, memperbaiki tata letak responsif, serta meningkatkan kecepatan website Anda yang sudah ada.',
+      'Tentu bisa. Anda dapat mengirimkan contoh website, referensi warna, atau tata letak yang disukai saat sesi konsultasi agar hasil akhirnya sesuai dengan karakter yang Anda inginkan.',
   },
   {
-    question: 'Apakah bisa membuat toko online / e-commerce?',
+    question: 'Apakah tersedia layanan pembuatan katalog produk atau toko online?',
     answer:
-      'Bisa. Proyek toko online ditangani melalui kategori Custom dengan fitur katalog produk, keranjang belanja, dan sistem pembayaran terintegrasi.',
+      'Ya, kami menyediakan kategori khusus Business Store mulai dari Rp1.299.000 untuk katalog produk, Rp2.499.000 untuk toko dengan keranjang checkout WhatsApp, hingga Rp5.999.000 untuk toko online lengkap dengan dashboard admin dan pembayaran digital.',
   },
   {
-    question: 'Apakah website bisa diperbarui setelah selesai?',
+    question: 'Apakah konten website bisa diperbarui setelah website aktif?',
     answer:
-      'Bisa. Kami menyediakan panduan serah terima serta paket pemeliharaan dan pembaruan berkala sesuai kebutuhan Anda.',
+      'Bisa. Untuk paket yang memiliki halaman pengelolaan (CMS/Admin), Anda dapat mengubah data secara mandiri. Kami juga menyediakan layanan pemeliharaan berkala maupun penambahan konten kapan saja dibutuhkan.',
   },
   {
-    question: 'Bagaimana cara memulai?',
+    question: 'Bagaimana langkah pertama untuk memesan?',
     answer:
-      'Cukup klik tombol Mulai Proyek atau hubungi WhatsApp 799Hi di 0821-9775-4103 untuk konsultasi awal.',
+      'Anda dapat langsung memilih kategori layanan dan paket di halaman ini, menggunakan kalkulator estimasi fitur tambahan (add-on), lalu menekan tombol Konsultasi via WhatsApp ke nomor +62 821-9775-4103.',
   },
 ];

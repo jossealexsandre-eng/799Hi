@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SERVICES } from '../data/content';
 import { SpotlightCard } from './SpotlightCard';
 
@@ -56,7 +56,7 @@ export const Services: React.FC<ServicesProps> = () => {
               transition={{ duration: 0.55, delay: 0.08 }}
               className="text-3xl sm:text-4xl md:text-5xl font-editorial font-normal tracking-tight text-[#F7F7F5] light:text-[#171717] mb-4"
             >
-              What we build.
+              Kategori layanan yang kami kerjakan.
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 18 }}

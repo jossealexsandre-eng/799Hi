@@ -56,31 +56,31 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   const workflowSteps = [
     {
       number: '01',
-      title: 'Consultation',
-      subtitle: 'Diskusikan kebutuhan dan tujuan website',
-      desc: 'Obrolan santai untuk memahami jenis website, preferensi gaya, serta fungsi yang dibutuhkan.',
+      title: 'Diskusi Awal',
+      subtitle: 'Ceritakan kebutuhan dan tujuan website',
+      desc: 'Obrolan santai untuk memahami jenis website, preferensi tampilan, serta fungsi yang dibutuhkan.',
     },
     {
       number: '02',
-      title: 'Choose Your Package',
-      subtitle: 'Pilih layanan dan paket yang sesuai',
-      desc: 'Tentukan paket (Basic, Standard, Premium) dan fitur tambahan (add-on) sesuai anggaran.',
+      title: 'Pilih Paket',
+      subtitle: 'Tentukan layanan dan paket yang sesuai',
+      desc: 'Pilih paket (Basic, Standard, Premium) dan fitur tambahan (add-on) sesuai anggaran.',
     },
     {
       number: '03',
-      title: 'Design & Development',
-      subtitle: 'Proses perancangan dan penataan materi',
+      title: 'Perancangan',
+      subtitle: 'Proses desain dan penataan materi',
       desc: 'Penyusunan tata letak, integrasi konten, optimasi gambar, dan implementasi fitur secara nyata.',
     },
     {
       number: '04',
-      title: 'Review & Revision',
-      subtitle: 'Klien melihat hasil dan mengajukan revisi',
+      title: 'Tinjauan & Revisi',
+      subtitle: 'Klien meninjau hasil dan mengajukan revisi',
       desc: 'Peninjauan bersama untuk memastikan tampilan dan fungsi sudah sesuai dengan kesepakatan.',
     },
     {
       number: '05',
-      title: 'Launch',
+      title: 'Publikasi',
       subtitle: 'Website dipublikasikan dan siap digunakan',
       desc: 'Pemasangan domain, konfigurasi hosting, uji coba akhir, dan website resmi aktif dapat diakses.',
     },
@@ -152,8 +152,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
               transition={{ duration: 0.55, delay: 0.08 }}
               className="text-4xl sm:text-5xl md:text-6xl font-editorial font-normal tracking-tight text-[#F7F7F5] light:text-[#171717] leading-[1.12] mb-6"
             >
-              Your Vision. <br className="hidden sm:inline" />
-              Our Creative Solutions.
+              Solusi Website Sesuai <br className="hidden sm:inline" />
+              Kebutuhanmu.
             </motion.h1>
 
             <motion.p
@@ -162,7 +162,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
               transition={{ duration: 0.55, delay: 0.16 }}
               className="text-base sm:text-lg text-[#8E8D89] light:text-[#737373] leading-relaxed mb-8 max-w-2xl"
             >
-              Website bukan hanya tentang tampilan. Kami membantu kamu membangun ruang digital yang sesuai dengan identitas, kebutuhan, dan tujuanmu.
+              Kami membantu kamu membangun ruang digital yang rapi, cepat, dan terstruktur sesuai dengan profil, usaha, maupun proyekmu.
             </motion.p>
 
             <motion.div
@@ -175,7 +175,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
                 onClick={handleScrollToOverview}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#171717] light:bg-[#171717] dark:bg-[#F7F7F5] text-white dark:text-[#0F0F0E] font-semibold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity cursor-pointer shadow-sm"
               >
-                <span>Explore Our Services</span>
+                <span>Lihat Pilihan Layanan</span>
                 <ArrowDown className="w-4 h-4" />
               </button>
 
@@ -302,10 +302,10 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
               ALUR PENGERJAAN
             </span>
             <h2 className="text-3xl sm:text-4xl font-editorial font-normal tracking-tight text-[#F7F7F5] light:text-[#171717] mb-3">
-              How We Work
+              Dari Diskusi Awal Hingga Website Tayang
             </h2>
             <p className="text-sm sm:text-base text-[#8E8D89] light:text-[#737373]">
-              Langkah transparan dari perkenalan ide hingga peluncuran website online Anda.
+              Lima tahapan kerja yang terarah agar website kamu selesai tepat waktu dan sesuai kebutuhan.
             </p>
           </div>
 
@@ -361,7 +361,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
             </span>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-editorial font-normal text-[#F7F7F5] light:text-[#171717] mb-4">
-              Ready to Build Something Great?
+              Siap Memulai Website Kamu?
             </h2>
 
             <p className="text-base text-[#8E8D89] light:text-[#737373] max-w-xl mx-auto mb-8">

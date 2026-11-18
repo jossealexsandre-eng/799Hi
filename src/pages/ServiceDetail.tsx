@@ -241,86 +241,97 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({
       </section>
 
       {/* ── Karya Nyata (Live Portfolio Showcase for this Category) ── */}
-      {LIVE_PROJECTS.filter((p) => p.categorySlug === serviceData.slug).length > 0 && (
-        <section className="py-16 sm:py-20 bg-[#111110] light:bg-[#F7F6F2] border-b border-[#242421] light:border-[#EAE7E1]">
-          <div className="max-w-7xl mx-auto px-5 sm:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-2 font-medium">
-                  CONTOH KARYA NYATA
+      {(() => {
+        const directMatches = LIVE_PROJECTS.filter((p) => p.categorySlug === serviceData.slug);
+        const showcaseProjects =
+          directMatches.length > 0
+            ? directMatches
+            : LIVE_PROJECTS.filter((p) => p.id === 'wheels' || p.id === 'duitmoo');
+        const isDirectMatch = directMatches.length > 0;
+
+        return (
+          <section className="py-16 sm:py-20 bg-[#111110] light:bg-[#F7F6F2] border-b border-[#242421] light:border-[#EAE7E1]">
+            <div className="max-w-7xl mx-auto px-5 sm:px-8">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-2 font-medium">
+                    {isDirectMatch ? 'CONTOH KARYA NYATA' : 'REFERENSI KARYA LIVE 799HI'}
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl font-editorial font-normal text-[#F7F7F5] light:text-[#171717]">
+                    {isDirectMatch
+                      ? `Proyek ${serviceData.title} yang Telah Kami Bangun`
+                      : 'Contoh Standar Kualitas Website Produksi Kami'}
+                  </h2>
+                </div>
+                <span className="text-xs font-mono text-[#8E8D89] light:text-[#737373]">
+                  Klik pada proyek untuk membuka website secara langsung
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-editorial font-normal text-[#F7F7F5] light:text-[#171717]">
-                  Proyek {serviceData.title} yang Telah Kami Bangun
-                </h2>
               </div>
-              <span className="text-xs font-mono text-[#8E8D89] light:text-[#737373]">
-                Klik pada proyek untuk membuka website secara langsung
-              </span>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              {LIVE_PROJECTS.filter((p) => p.categorySlug === serviceData.slug).map((project) => (
-                <a
-                  key={project.id}
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group rounded-2xl bg-[#161615] light:bg-[#FFFFFF] border border-[#282825] light:border-[#E2E0D8] hover:border-[#F20D0D]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-[0_18px_45px_-15px_rgba(17,17,17,0.12)] hover:shadow-[0_24px_55px_-15px_rgba(17,17,17,0.2)] hover:-translate-y-1"
-                >
-                  <div>
-                    <div className="h-8 px-3.5 bg-[#1C1C1A] light:bg-[#F2F0EB] border-b border-[#262624] light:border-[#E4E2D8] flex items-center justify-between">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
-                        <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
-                        <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
-                      </div>
-                      <span className="text-[10px] font-mono text-[#8E8D89] light:text-[#666] flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        {project.displayUrl}
-                      </span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-[#888] group-hover:text-[#F20D0D] transition-colors" />
-                    </div>
-
-                    <div className="aspect-[16/10] overflow-hidden bg-[#0E0E0D]">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="p-5 sm:p-6 flex items-center justify-between gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {showcaseProjects.map((project) => (
+                  <a
+                    key={project.id}
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-2xl bg-[#161615] light:bg-[#FFFFFF] border border-[#282825] light:border-[#E2E0D8] hover:border-[#F20D0D]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-[0_18px_45px_-15px_rgba(17,17,17,0.12)] hover:shadow-[0_24px_55px_-15px_rgba(17,17,17,0.2)] hover:-translate-y-1"
+                  >
                     <div>
-                      <h3 className="text-lg font-editorial font-normal text-[#F7F7F5] light:text-[#171717] group-hover:text-[#F20D0D] transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-xs text-[#8E8D89] light:text-[#737373] mt-0.5">
-                        {project.scope}
-                      </p>
-                      <div className="flex items-baseline gap-2 mt-2">
-                        {project.originalPrice && (
-                          <span className="text-xs font-mono text-[#888] line-through decoration-[#F20D0D]/80">
-                            {project.originalPrice}
-                          </span>
-                        )}
-                        <span className="text-xs font-mono font-bold text-[#F20D0D]">
-                          {project.startingPrice}
+                      <div className="h-8 px-3.5 bg-[#1C1C1A] light:bg-[#F2F0EB] border-b border-[#262624] light:border-[#E4E2D8] flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
+                          <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
+                          <span className="w-2 h-2 rounded-full bg-[#D8D6CE] dark:bg-[#3A3A36]" />
+                        </div>
+                        <span className="text-[10px] font-mono text-[#8E8D89] light:text-[#666] flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          {project.displayUrl}
                         </span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-[#888] group-hover:text-[#F20D0D] transition-colors" />
+                      </div>
+
+                      <div className="aspect-[16/10] overflow-hidden bg-[#0E0E0D]">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                        />
                       </div>
                     </div>
-                    <span className="inline-flex items-center gap-1 px-3.5 py-2 rounded-full bg-[#171717] text-white dark:bg-[#F7F7F5] dark:text-[#171717] text-[11px] font-semibold shrink-0 group-hover:bg-[#F20D0D] group-hover:text-white transition-colors">
-                      <span>Lihat Live</span>
-                      <ArrowUpRight className="w-3 h-3" />
-                    </span>
-                  </div>
-                </a>
-              ))}
+
+                    <div className="p-5 sm:p-6 flex items-center justify-between gap-4">
+                      <div>
+                        <h3 className="text-lg font-editorial font-normal text-[#F7F7F5] light:text-[#171717] group-hover:text-[#F20D0D] transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className="text-xs text-[#8E8D89] light:text-[#737373] mt-0.5">
+                          {project.scope}
+                        </p>
+                        <div className="flex items-baseline gap-2 mt-2">
+                          {project.originalPrice && (
+                            <span className="text-xs font-mono text-[#888] line-through decoration-[#F20D0D]/80">
+                              {project.originalPrice}
+                            </span>
+                          )}
+                          <span className="text-xs font-mono font-bold text-[#F20D0D]">
+                            {project.startingPrice}
+                          </span>
+                        </div>
+                      </div>
+                      <span className="inline-flex items-center gap-1 px-3.5 py-2 rounded-full bg-[#171717] text-white dark:bg-[#F7F7F5] dark:text-[#171717] text-[11px] font-semibold shrink-0 group-hover:bg-[#F20D0D] group-hover:text-white transition-colors">
+                        <span>Lihat Live</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        );
+      })()}
 
       {/* ── B. Package Pricing Cards ── */}
       <section id="packages-section" className="py-20 sm:py-28 relative">
