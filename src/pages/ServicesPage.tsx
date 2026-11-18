@@ -5,23 +5,12 @@ import {
   ArrowRight,
   ArrowDown,
   MessageCircle,
-  Sparkles,
-  Smartphone,
-  Eye,
-  ShieldCheck,
-  MessagesSquare,
-  Layers,
-  FileCheck,
-  Palette,
-  Rocket,
   Sun,
   Moon,
-  ArrowLeft,
 } from 'lucide-react';
 import {
   SERVICE_PRICING_DATA,
   SERVICE_SLUGS,
-  WHATSAPP_PHONE,
   buildDynamicWhatsAppUrl,
 } from '../data/servicePricing';
 import { Logo799Hi } from '../components/Logo799Hi';
@@ -63,37 +52,6 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   };
 
   const servicesList = SERVICE_SLUGS.map((slug) => SERVICE_PRICING_DATA[slug]);
-
-  const whyChooseItems = [
-    {
-      icon: Palette,
-      number: '01',
-      title: 'Personalized Design',
-      description:
-        'Website dirancang khusus sesuai karakter, estetika, dan kebutuhan unik Anda, bukan sekadar mengganti teks pada template pasaran.',
-    },
-    {
-      icon: Smartphone,
-      number: '02',
-      title: 'Mobile Friendly',
-      description:
-        'Tampilan sempurna dan nyaman dibuka di smartphone, tablet, maupun layar laptop dengan kecepatan muat optimal.',
-    },
-    {
-      icon: ShieldCheck,
-      number: '03',
-      title: 'Transparent Pricing',
-      description:
-        'Informasi paket, fitur yang didapat, batasan pengerjaan, dan estimasi biaya dipaparkan secara jujur tanpa biaya tersembunyi.',
-    },
-    {
-      icon: MessagesSquare,
-      number: '04',
-      title: 'Direct Consultation',
-      description:
-        'Diskusi langsung tanpa birokrasi berbelit. Kami mendengarkan tujuan Anda dan merekomendasikan solusi yang paling efisien.',
-    },
-  ];
 
   const workflowSteps = [
     {
@@ -185,7 +143,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#F20D0D]/30 bg-[#F20D0D]/10 text-[#F20D0D] text-[11px] font-mono uppercase tracking-[0.16em] mb-6 font-semibold"
             >
-              <Sparkles className="w-3.5 h-3.5" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F20D0D]" />
               <span>Layanan Pembuatan Website</span>
             </motion.div>
 
@@ -337,58 +295,8 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
         </div>
       </section>
 
-      {/* ── Section 3: Why Choose 799Hi ── */}
-      <section className="py-20 sm:py-24 bg-[#111110] light:bg-[#F2F0EA] border-y border-[#242421] light:border-[#E3E0D8]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="max-w-2xl mb-12 sm:mb-16">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-2 font-medium">
-              PRINSIP STUDIO
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-editorial font-normal tracking-tight text-[#F7F7F5] light:text-[#171717] mb-3">
-              More Than Just a Website.
-            </h2>
-            <p className="text-sm sm:text-base text-[#8E8D89] light:text-[#737373]">
-              Empat komitmen dasar yang mendasari setiap proses kerja sama kami dengan klien.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyChooseItems.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.45, delay: idx * 0.08 }}
-                  className="p-6 rounded-2xl bg-[#171716] light:bg-[#FFFFFF] border border-[#262623] light:border-[#E0DCD3]"
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="p-2.5 rounded-xl bg-[#F20D0D]/10 text-[#F20D0D]">
-                      <Icon className="w-5 h-5" />
-                    </span>
-                    <span className="font-mono text-xs text-[#8E8D89] light:text-[#737373]">
-                      {item.number}
-                    </span>
-                  </div>
-
-                  <h3 className="text-base font-semibold text-[#F7F7F5] light:text-[#171717] mb-2">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs text-[#8E8D89] light:text-[#737373] leading-relaxed">
-                    {item.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 4: How We Work (5 Stepper) ── */}
-      <section className="py-20 sm:py-28 relative">
+      {/* ── Section 3: How We Work (5 Stepper) ── */}
+      <section className="py-20 sm:py-28 bg-[#111110] light:bg-[#F7F6F2] border-t border-[#242421] light:border-[#EAE7E1] relative">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="max-w-2xl mb-12 sm:mb-16">
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#F20D0D] block mb-2 font-medium">

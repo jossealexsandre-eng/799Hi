@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { PRICING_PACKAGES } from '../data/content';
 import { PricingSkeleton } from './Skeleton';
 import { SpotlightCard } from './SpotlightCard';
@@ -14,20 +14,9 @@ interface PricingProps {
 
 export const Pricing: React.FC<PricingProps> = ({
   onSelectPackage,
-  isLoading: externalLoading,
+  isLoading = false,
 }) => {
   const navigate = useNavigate();
-  const [internalLoading, setInternalLoading] = useState(true);
-
-  useEffect(() => {
-    if (externalLoading !== undefined) return;
-    const timer = setTimeout(() => {
-      setInternalLoading(false);
-    }, 450);
-    return () => clearTimeout(timer);
-  }, [externalLoading]);
-
-  const isLoading = externalLoading !== undefined ? externalLoading : internalLoading;
 
   const categories = [
     { label: 'Personal Portfolio', price: 'Mulai Rp549.000', slug: 'personal-portfolio' },
@@ -158,8 +147,7 @@ export const Pricing: React.FC<PricingProps> = ({
                       {/* Rekomendasi Badge for Standard */}
                       {isStandard && (
                         <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10">
-                          <span className="float-badge inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F20D0D] text-white text-[10px] font-bold uppercase tracking-widest shadow-md shadow-[#F20D0D]/40 border border-white/15">
-                            <Sparkles className="w-3 h-3" />
+                          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F20D0D] text-white text-[10px] font-bold uppercase tracking-widest shadow-sm">
                             REKOMENDASI
                           </span>
                         </div>

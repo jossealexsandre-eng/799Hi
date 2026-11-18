@@ -8,12 +8,10 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { TrustBar } from './components/TrustBar';
 import { Services } from './components/Services';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
 import { Process } from './components/Process';
-import { WhyUs } from './components/WhyUs';
 import { FAQ } from './components/FAQ';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
@@ -25,8 +23,6 @@ import { IntroAnimation } from './components/IntroAnimation';
 import { SectionDivider } from './components/SectionDivider';
 import { ServiceDetail } from './pages/ServiceDetail';
 import { ServicesPage } from './pages/ServicesPage';
-import { ClickBurst } from './components/ClickBurst';
-import { AmbientParticles } from './components/AmbientParticles';
 
 export default function App() {
   const location = useLocation();
@@ -118,14 +114,6 @@ export default function App() {
       {/* Visual Reading Progress Bar */}
       <ScrollProgressBar />
 
-      {/* ── ANIMATIONS ── */}
-      {/* 1. Click burst sparkle on every click */}
-      <ClickBurst />
-
-      {/* 2. Floating ambient dust particles (background) */}
-      <AmbientParticles />
-
-
       {/* Routes Switch — AnimatePresence mode="wait" for smooth page transitions */}
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
@@ -155,15 +143,12 @@ export default function App() {
                     onOpenLiveWedding={() => setIsLiveWeddingOpen(true)}
                   />
 
-                  {/* 2. Trust Bar */}
-                  <TrustBar />
-
-                  {/* 3. Services */}
+                  {/* 2. Services */}
                   <Services onSelectServiceForInquiry={handleServiceSelect} />
 
                   <SectionDivider />
 
-                  {/* 4. Portfolio (Selected Work) */}
+                  {/* 3. Portfolio (Selected Work) */}
                   <Portfolio
                     onOpenLiveWedding={() => setIsLiveWeddingOpen(true)}
                     onOpenCaseStudy={() => setIsLiveWeddingOpen(true)}
@@ -171,28 +156,24 @@ export default function App() {
 
                   <SectionDivider withAccent />
 
-                  {/* 6. Pricing */}
+                  {/* 4. Pricing */}
                   <Pricing
                     onSelectPackage={(pkg) => scrollToContact(pkg)}
                   />
 
                   <SectionDivider />
 
-                  {/* 7. Process */}
+                  {/* 5. Process */}
                   <Process />
-
-                  {/* 8. Why 799Hi */}
-                  <WhyUs />
 
                   <SectionDivider />
 
-
-                  {/* 10. FAQ */}
+                  {/* 6. FAQ */}
                   <FAQ />
 
                   <SectionDivider withAccent />
 
-                  {/* 11. Project Inquiry & Contact */}
+                  {/* 7. Project Inquiry & Contact */}
                   <ContactForm
                     preselectedPackage={preselectedPackage}
                     preselectedService={preselectedService}

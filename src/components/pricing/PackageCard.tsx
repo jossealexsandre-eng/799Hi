@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, X as XIcon, ArrowRight, ChevronDown, ChevronUp, Sparkles, ShieldCheck } from 'lucide-react';
+import { Check, X as XIcon, ArrowRight, ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react';
 import { ServicePackageItem } from '../../data/servicePricing';
 
 interface PackageCardProps {
@@ -59,7 +59,6 @@ export const PackageCard: React.FC<PackageCardProps> = ({
                 : 'bg-[#721B1B] text-white dark:bg-[#F20D0D]/20 dark:text-[#F20D0D] dark:border dark:border-[#F20D0D]/30'
             }`}
           >
-            {isRecommended && <Sparkles className="w-3 h-3" />}
             {pkg.badge}
           </span>
         </div>
